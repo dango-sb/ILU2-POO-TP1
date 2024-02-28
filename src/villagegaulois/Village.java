@@ -56,4 +56,60 @@ public class Village {
 		}
 		return chaine.toString();
 	}
+	private static class Marche {
+		private Etal[] etals;
+		private int capacite;
+		
+		private Marche(int nombreEtals) {
+			this.etals = new Etal[nombreEtals];
+			this.capacite = nombreEtals;
+		}
+		
+		private void utiliserEtal(int indiceEtal, Gaulois vendeur, String produit, int nbProduit) {
+			this.etals[indiceEtal].occuperEtal(vendeur, produit, nbProduit); 
+		} 
+		
+		private int trouverEtalLibre() {
+			for (int i=0;i<capacite;i++) {
+				if (this.etals[i].isEtalOccupe()) {
+					return i;
+				}
+			}
+			return -1;
+		}
+		
+		private Etal[] trouverEtals(String produit) {
+			Etal[] etalsProd = new Etal[this.capacite];
+			int j=0;
+			for (int i=0;i<capacite;i++) {
+				if (this.etals[i].contientProduit(produit)) {
+					etalsProd[j++] = this.etals[i];
+				}
+			}
+			return etalsProd;
+		}
+		
+		private Etal trouverVendeur(Gaulois gaulois)
+		{
+			for (int i=0;i<this.capacite;i++) {
+				if (this.etals[i].getVendeur()==gaulois) {
+					return this.etals[i];
+				}
+			}
+			return null;
+		}
+		
+		private void afficherMarche() {
+			int etalsOccupes=0;
+			for (int i=0;i>this.capacite;i++) {
+				if (this.etals[i].isEtalOccupe()) {
+					this.etals[i].afficherEtal();
+					etalsOccupes++;
+				}
+			}
+			if (this.capacite == etalsOccupes) {
+				System.out.println("Il reste " + String.valueOf(this.capacite - etalsOccupes) + "étals non utilisés dans la marché");
+			}
+		}
+	}
 }

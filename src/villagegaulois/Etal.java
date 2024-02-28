@@ -77,5 +77,39 @@ public class Etal {
 	public boolean contientProduit(String produit) {
 		return this.produit.equals(produit);
 	}
+	
+	private static class Marche {
+		private Etal[] etals;
+		private int capacite;
+		
+		private Marche(int nombreEtals) {
+			this.etals = new Etal[nombreEtals];
+			this.capacite = nombreEtals;
+		}
+		
+		private void utiliserEtal(int indiceEtal, Gaulois vendeur, String produit, int nbProduit) {
+			this.etals[indiceEtal].occuperEtal(vendeur, produit, nbProduit); 
+		} 
+		
+		private int trouverEtalLibre() {
+			for (int i=0;i<capacite;i++) {
+				if (this.etals[i].isEtalOccupe()) {
+					return i;
+				}
+			}
+			return -1;
+		}
+		
+		private Etal[] trouverEtals(String produit) {
+			Etal[] etalsProd = new Etal[this.capacite];
+			int j=0;
+			for (int i=0;i<capacite;i++) {
+				if (this.etals[i].contientProduit(produit)) {
+					etalsProd[j++] = this.etals[i];
+				}
+			}
+			return etalsProd;
+		}
+	}
 
 }
