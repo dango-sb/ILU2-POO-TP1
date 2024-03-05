@@ -1,5 +1,6 @@
 package villagegaulois;
 
+import exceptions.VillageSansChefException;
 import personnages.Chef;
 import personnages.Gaulois;
 
@@ -44,7 +45,8 @@ public class Village {
 		return null;
 	}
 
-	public String afficherVillageois() {
+	public String afficherVillageois() throws VillageSansChefException {
+		if (this.chef == null) throw new VillageSansChefException("Le village doit avoir un chef!");
 		StringBuilder chaine = new StringBuilder();
 		if (nbVillageois < 1) {
 			chaine.append("Il n'y a encore aucun habitant au village du chef "
