@@ -23,6 +23,6 @@ public class Gaulois extends Personnage {
 
 	public void boirePotion(int forcePotion) {
 		this.effetPotion = forcePotion;
-		parler("Merci Druide, je sens que ma force est " + forcePotion + " fois dÃ©cuplÃ©e.");
+		parler("Merci Druide, je sens que ma force est " + forcePotion + " fois décuplée.");
 	}
 }

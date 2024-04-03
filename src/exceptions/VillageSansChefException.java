@@ -1,20 +1,9 @@
 package exceptions;
 
-public class VillageSansChefException extends RuntimeException{
-	
-	public VillageSansChefException() {
-		super();
+public class VillageSansChefException extends IllegalStateException {
+
+	public VillageSansChefException(String message) {
+		super(message);
 	}
 	
-	public VillageSansChefException(String errorMessage) {
-		super(errorMessage);
-	}
-	
-	public VillageSansChefException(String message, Throwable cause) {
-        super(message, cause);
-    }
-	
-	public VillageSansChefException(Throwable cause) {
-        super(cause);
-    }
 }
