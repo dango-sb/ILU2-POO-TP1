@@ -12,7 +12,7 @@ public class Village {
 
 	public Village(String nom, int nbVillageoisMaximum, int nbEtals) {
 		this.nom = nom;
-		marche = new Marche(nbEtals);
+		this.marche = new Marche(nbEtals);
 		villageois = new Gaulois[nbVillageoisMaximum];
 	}
 
@@ -64,6 +64,9 @@ public class Village {
 		private int nbEtals;
 		public Marche(int nbEtals) {
 			this.etals = new Etal[nbEtals];
+			for (int i = 0; i<nbEtals;i++) {
+				etals[i] = new Etal();
+			}
 			this.nbEtals = nbEtals;
 		}
 		
